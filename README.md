@@ -5,6 +5,6 @@
 2. Allowing managers to view, add, and re-stock items
 
 
-#### For a shopped to enter the store they will need to run 'node bamazonCustomer.js'
-![Bamazom Store Front](/images/Storefront-Customer.PNG)
+#### For a shopper to enter the store they will need to run 'node bamazonCustomer.js'
+######![Bamazom Store Front](/images/Storefront-Customer.PNG)
 :credit_card:
