@@ -6,5 +6,5 @@
 
 
 #### For a shopper to enter the store they will need to run 'node bamazonCustomer.js'
-######![Bamazom Store Front](/images/Storefront-Customer.PNG)
+######![Bamazom Store Front](/images/customer-storefront.PNG)
 :credit_card:
