@@ -1,0 +1,30 @@
+{
+  "name": "12-bamazon",
+  "version": "1.0.0",
+  "description": "CLI for purchasing items and managing inventory",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node bamazonCustomer.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AaronA05/12-bamazon.git"
+  },
+  "keywords": [
+    "Bamazon",
+    "CLI",
+    "shopping"
+  ],
+  "author": "Aaron Arndt",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AaronA05/12-bamazon/issues"
+  },
+  "homepage": "https://github.com/AaronA05/12-bamazon#readme",
+  "dependencies": {
+    "cli-table": "^0.3.1",
+    "inquirer": "^3.3.0",
+    "mysql": "^2.15.0"
+  }
+}
