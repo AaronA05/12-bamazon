@@ -40,7 +40,7 @@ function manageStore(){
 			type: "list",
 			name: "choice",
 			message: "================ \n Welcome to the Bamazon Marketplace!\n==============\n What would you like to do?",
-			choices: ["View All Products", "View Low Inventory", "Add Inventory", "Add New Product"]
+			choices: ["View All Products", "View Low Inventory", "Add Inventory", "Add New Product", "Leave the store"]
 		}
 
 
@@ -109,11 +109,58 @@ function manageStore(){
 				});	
 		}//if add inventory
 
-		if(userChoice === "Add New Prodcut"){
-			//prompt for name, department, price and quantity
-			//confirm the additional item
-			//add these as new data to the database
-			//display the updated data
+		if(userChoice === "Add New Product"){
+			inq.prompt([
+				{
+					type: "list",
+					name: "dept",
+					message: "What department will this item go into?",
+					choices: ["Electronics", "Cleaning", "Food", "Other"]
+				},
+				{
+					type: "prompt",
+					name: "item",
+					message: "What item do you want add?"
+				},
+				{
+					type: "prompt",
+					name: "quantity",
+					message: "How many are you adding?"
+				},
+				{
+					type: "prompt",
+					name: "price",
+					message: "How much does this item cost?"
+				}
+
+				]).then(function(data){
+					console.log("\n You will be adding " + data.quantity + " units of " + data.item + " to the store. The " + data.item + " will cost " + data.price + " dollars.\n");
+					inq.prompt([
+						{
+							type: "confirm",
+							name: "confirm",
+							message: "Continue with addition of item?"
+						}
+						]).then(function(confirm){
+							if(confirm.confirm){
+								connection.query("INSERT INTO products (prod_name, dept_name, price, quantity) VALUES (?,?,?,?)", [data.item, data.dept, data.price, data.quantity]);
+								connection.query("SELECT * FROM products", function(err, data){
+									createTable(err, data);
+								});
+							}else{
+								console.log("Sorry to hear that \n");
+								manageStore();
+							}
+						});
+
+				});
+
+		}
+
+		//allows to customer to disconnect from mySQL
+		if(userChoice === "Leave the store"){
+			console.log("\nThanks for visiting the store!\n");
+			connection.end();
 		}
 
 	});//then function for inq.prompt
